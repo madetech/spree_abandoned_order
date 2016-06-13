@@ -4,7 +4,7 @@ require 'spree_abandoned_orders/version'
 
 Gem::Specification.new do |s|
   s.name = 'spree_abandoned_orders'
-  s.version = SpreeAbandonedOrders::VERSION
+  s.version = Spree::AbandonedOrders::VERSION
   s.summary = 'Abandoned cart email'
   s.description = 'Abandoned cart email'
   s.required_ruby_version = '>= 2.2.4'

@@ -1,6 +1,6 @@
 module Spree
   class AbandonedOrdersConfiguration < Preferences::Configuration
-    preference :send_email_after, :integer, default: 1.hours
-    preference :dont_notify_after, :integer, default: 24.hours
+    preference :inactivity_before_considered_abandoned, :integer, default: 1.hour
+    preference :ignore_after_timeframe, :integer, default: 5.days
   end
 end

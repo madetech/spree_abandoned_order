@@ -1,3 +1,5 @@
-module SpreeAbandonedOrders
-  VERSION = '0.0.1'
+module Spree
+  module AbandonedOrders
+    VERSION = '0.0.1'
+  end
 end

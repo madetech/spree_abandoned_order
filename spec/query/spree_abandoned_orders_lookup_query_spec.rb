@@ -1,13 +1,13 @@
-describe Spree::AbandonedOrdersQuery do
+describe Spree::AbandonedOrders::LookupQuery do
   let!(:order1) { create(:order_with_line_items, updated_at: 2.day.ago) }
   let!(:order2) { create(:order_with_line_items, updated_at: 10.days.ago) }
   let!(:order3) { create(:shipped_order, updated_at: 10.seconds.ago) }
   let!(:order4) { create(:order, updated_at: 2.days.ago) }
 
-  subject(:query) { AbandonedOrdersQuery.new.find_each }
+  subject(:query) { described_class.new.find_each }
   before(:all) {
-    Spree::AbandonedOrdersConfig.send_email_after = 1.day
-    Spree::AbandonedOrdersConfig.dont_notify_after = 5.days
+    Spree::AbandonedOrdersConfig.inactivity_before_considered_abandoned = 1.day
+    Spree::AbandonedOrdersConfig.ignore_after_timeframe = 5.days
   }
 
   it 'should include orders between 1 and 5 days old' do
