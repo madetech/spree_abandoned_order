@@ -37,9 +37,9 @@ Create a rake task to send the email:
 ```
 desc "Abandoned order email"
 task send_abandoned_order_emails: :environment do
-    abandoned_orders = AbandonedOrdersQuery.new
-    AbandonedOrdersNotNotifiedQuery.new(abandoned_orders).find_each do |order|
-      AbandonedOrderNotifier.new(order)
+    abandoned_orders = Spree::AbandonedOrders::LookupQuery.new
+    Spree::AbandonedOrders::FilterNotifiedQuery.new(abandoned_orders).find_each do |order|
+      Spree::AbandonedOrders::Notifier.new(order)
     end
 end
 ```
