@@ -22,8 +22,8 @@ bundle exec rake db:migrate
 Use the config values below to change settings:
 
 ```
-Spree::AbandonedOrder::Config.email_timeframe = 12.hours
-Spree::AbandonedOrder::Config.email_from = "spree@example.com"
+Spree::AbandonedOrdersConfig.inactivity_for = 12.hours
+Spree::AbandonedOrdersConfig.ignore_after = 5.days
 ```
 
 Override the email view to customise:
