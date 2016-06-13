@@ -30,13 +30,13 @@ Spree::AbandonedOrdersConfig.ignore_after = 5.days
 
 Override the email view to customise:
 
-```
+```ruby
 app/views/spree/abandoned_order_mailer/abandoned_email.html.erb
 ```
 
 Create a rake task to send the email:
 
-```
+```ruby
 desc "Abandoned order email"
 task send_abandoned_order_notifications: :environment do
     abandoned_orders = Spree::AbandonedOrders::LookupQuery.new
@@ -51,7 +51,7 @@ end
 
 To run the tests, create a dummy Rails application and run the suite.
 
-```shell
+```ruby
 bundle
 bundle exec rake test_app
 bundle exec rspec spec
