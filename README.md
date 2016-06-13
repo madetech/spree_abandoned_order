@@ -1,5 +1,11 @@
 # Abandoned Orders For Spree
 
+[![Code Climate](https://codeclimate.com/github/madetech/createsend-rails/badges/gpa.svg)](https://codeclimate.com/github/madetech/spree_abandoned_orders)
+
+[![Build Status](https://travis-ci.org/madetech/createsend-rails.svg?branch=master)](https://travis-ci.org/madetech/spree_abandoned_orders)
+
+[![Test Coverage](https://codeclimate.com/github/madetech/createsend-rails/badges/coverage.svg)](https://codeclimate.com/github/madetech/spree_abandoned_orders/coverage)
+
 An abandoned order extension for Spree, which looks for orders with line items that were created between X & Y days ago and sends an email notification to the customer to remind them to purchase.
 
 Originally this gem was forked from [https://github.com/Hates/spree_abandoned_cart_email](https://github.com/Hates/spree_abandoned_cart_email) but we subsequently decided to rewrite the functionality to make it more modular and reusable across multiple applications.
