@@ -6,7 +6,9 @@ module Spree
       end
 
       def save
-        deliver_email && log_delivery
+        ActiveRecord::Base.transaction do
+          deliver_email && log_email
+        end
       end
 
       private
@@ -15,7 +17,7 @@ module Spree
         Spree::AbandonedOrderMailer.notify(@order).deliver
       end
 
-      def log_delivery
+      def log_email
         Spree::AbandonedOrders::EmailLog.create(spree_order_id: @order.id,
                                                 email_sent_at: Time.zone.now)
       end
