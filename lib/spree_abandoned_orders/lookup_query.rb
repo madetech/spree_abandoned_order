@@ -6,8 +6,8 @@ module Spree
       end
 
       def find_each(&block)
-        begin_timeframe = (Time.zone.now - Spree::AbandonedOrdersConfig.inactivity_before_considered_abandoned)
-        end_timeframe = (Time.zone.now - Spree::AbandonedOrdersConfig.ignore_after_timeframe)
+        begin_timeframe = (Time.zone.now - Spree::AbandonedOrdersConfig.inactivity_for)
+        end_timeframe = (Time.zone.now - Spree::AbandonedOrdersConfig.ignore_after)
         @relation.where(updated_at: (end_timeframe..begin_timeframe)).find_each(&block)
       end
     end
