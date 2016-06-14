@@ -16,7 +16,8 @@ module Spree
       end
 
       def log_delivery
-        Spree::AbandonedOrders::Log.create(order: @order, email_sent_at: Time.zone.now)
+        Spree::AbandonedOrders::EmailLog.create(spree_order_id: @order.id,
+                                                email_sent_at: Time.zone.now)
       end
     end
   end
