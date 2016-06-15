@@ -1,5 +1,5 @@
 module Spree
-  module AbandondedOrders
+  module AbandonedOrders
     class EmailLog < ActiveRecord::Base
       belongs_to :order, class_name: "Spree::Order"
 
