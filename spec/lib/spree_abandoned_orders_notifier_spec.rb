@@ -1,5 +1,3 @@
-require 'pry'
-
 describe Spree::AbandonedOrders::Notifier do
   let!(:order_a) { create(:order_with_line_items, email: 'test_a@test.com') }
   let!(:order_b) { create(:order_with_line_items, email: 'test_b@test.com') }
