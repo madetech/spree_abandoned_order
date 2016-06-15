@@ -2,4 +2,4 @@ en:
   spree:
     abandoned_order:
       email:
-        subject: "Abandoned Cart"
+        subject: "Abandoned Order"
