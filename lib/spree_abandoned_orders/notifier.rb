@@ -13,8 +13,8 @@ module Spree
       end
 
       def log_email
-        Spree::AbandonedOrders::EmailLog.create!(spree_order_id: @order.id,
-                                                 email_sent_at: Time.zone.now)
+        EmailLog.create!(spree_order_id: @order.id,
+                         email_sent_at: Time.zone.now)
       end
 
       def initialize(order)
