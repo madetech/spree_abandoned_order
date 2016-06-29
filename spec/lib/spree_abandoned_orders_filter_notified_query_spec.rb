@@ -25,8 +25,8 @@ describe Spree::AbandonedOrders::FilterNotifiedQuery do
     subject { described_class.new(abandonded).find_each }
 
     it 'should exclude orders which have been notified' do
-      Spree::AbandonedOrders::Notifier.new(order1).save
-      Spree::AbandonedOrders::Notifier.new(order3).save
+      Spree::AbandonedOrders::Notifier.deliver(order1)
+      Spree::AbandonedOrders::Notifier.deliver(order3)
 
       is_expected.to_not include(order1)
       is_expected.to_not include(order3)

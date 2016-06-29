@@ -4,7 +4,7 @@ module Spree
 
     class Notifier
       def self.deliver(order)
-        new(order).save
+        new(order)
       end
 
       private
@@ -19,9 +19,10 @@ module Spree
 
       def initialize(order)
         @order = order
+        save!
       end
 
-      def save
+      def save!
         begin
           ActiveRecord::Base.transaction do
             log_email && deliver_email
