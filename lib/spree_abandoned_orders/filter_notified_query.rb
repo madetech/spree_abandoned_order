@@ -1,7 +1,7 @@
 module Spree
   module AbandonedOrders
     class FilterNotifiedQuery
-      def initialize(relation = Spree::Order.all)
+      def initialize(relation = Spree::Order.abandoned)
         @relation = relation
       end
 
