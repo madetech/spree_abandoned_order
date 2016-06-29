@@ -1,6 +1,9 @@
-FactoryGirl.define do
-  # Define your Spree extensions Factories within this file to enable applications, and other extensions to use and override them.
-  #
-  # Example adding this to your spec_helper will load these Factories for use:
-  # require 'spree_abandoned_orders/factories'
+FactoryGirl.modify do
+  [:order, :order_with_line_items, :shipped_order].each do |name|
+    factory name do
+      after(:create) do |order, evaluator|
+        order.update_attribute(:updated_at, evaluator.updated_at)
+      end
+    end
+  end
 end

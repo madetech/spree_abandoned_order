@@ -1,19 +1,21 @@
 module Spree
   module AbandonedOrders
     class LookupQuery
-      def initialize(relation = Spree::Order.abandoned)
-        @relation = relation
+      def initialize(relation = Spree::Order.all)
+        @relation = relation.abandoned(begin_at, end_at)
       end
 
       def find_each(&block)
-        @relation.where(updated_at: within_timeframe).find_each(&block)
+        @relation.find_each(&block)
       end
 
       private
-      def within_timeframe
-        begin_at = (Time.zone.now - Spree::AbandonedOrdersConfig.ignore_after)
-        end_at = (Time.zone.now - Spree::AbandonedOrdersConfig.inactivity_for)
-        (begin_at..end_at)
+      def begin_at
+        (Time.zone.now - Spree::AbandonedOrdersConfig.ignore_after)
+      end
+
+      def end_at
+        (Time.zone.now - Spree::AbandonedOrdersConfig.inactive_for)
       end
 
     end

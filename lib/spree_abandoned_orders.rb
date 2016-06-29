@@ -6,3 +6,7 @@ require 'spree_abandoned_orders/email_log'
 require 'spree_abandoned_orders/lookup_query'
 require 'spree_abandoned_orders/notifier'
 require 'spree_abandoned_orders/scopes'
+
+if defined?(Rails)
+  require 'spree_abandoned_orders/railtie'
+end

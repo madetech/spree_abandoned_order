@@ -4,12 +4,16 @@ module Spree
       extend ActiveSupport::Concern
 
       included do
-        scope :abandoned, -> {
+        scope :abandoned, -> (begin_at, end_at) {
           where("state != ? AND (payment_state IS NULL OR payment_state != ?)
-                AND email is NOT NULL",
-                "complete",
-                "paid")
+          AND (email is NOT NULL) AND (item_total > ?) AND (DATE(updated_at) BETWEEN ? AND ?)",
+          "complete",
+          "paid",
+          "0.0",
+          begin_at,
+          end_at)
         }
+
       end
     end
   end
