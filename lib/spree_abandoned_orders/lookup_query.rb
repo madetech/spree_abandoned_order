@@ -1,8 +1,8 @@
 module Spree
   module AbandonedOrders
     class LookupQuery
-      def initialize(relation = Spree::Order.abandoned)
-        @relation = relation.abandoned(begin_at, end_at)
+      def initialize()
+        @relation = Spree::Order.abandoned(begin_at, end_at)
       end
 
       def find_each(&block)
