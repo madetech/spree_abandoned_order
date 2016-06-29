@@ -4,7 +4,7 @@ module Spree
       def perform
         abandoned_orders = Spree::AbandonedOrders::LookupQuery.new.find_each
         Spree::AbandonedOrders::FilterNotifiedQuery.new(abandoned_orders).find_each.each do |order|
-          Spree::AbandonedOrders::Notifier.new(order).save
+          Spree::AbandonedOrders::Notifier.deliver(order)
         end
       end
     end
