@@ -3,6 +3,20 @@ module Spree
     class NotificationError < StandardError; end
 
     class Notifier
+      def self.deliver(order)
+        new(order).save
+      end
+
+      private
+      def deliver_email
+        Spree::AbandonedOrderMailer.notify(@order).deliver
+      end
+
+      def log_email
+        Spree::AbandonedOrders::EmailLog.create!(spree_order_id: @order.id,
+                                                 email_sent_at: Time.zone.now)
+      end
+
       def initialize(order)
         @order = order
       end
@@ -15,17 +29,6 @@ module Spree
         rescue
           raise NotificationError
         end
-      end
-
-      private
-
-      def deliver_email
-        Spree::AbandonedOrderMailer.notify(@order).deliver
-      end
-
-      def log_email
-        Spree::AbandonedOrders::EmailLog.create!(spree_order_id: @order.id,
-                                                 email_sent_at: Time.zone.now)
       end
     end
   end
