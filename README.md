@@ -26,7 +26,7 @@ bundle exec rake db:migrate
 Use the config values below to change settings:
 
 ```ruby
-Spree::AbandonedOrdersConfig.inactivity_for = 12.hours
+Spree::AbandonedOrdersConfig.inactive_for = 12.hours
 Spree::AbandonedOrdersConfig.ignore_after = 5.days
 ```
 

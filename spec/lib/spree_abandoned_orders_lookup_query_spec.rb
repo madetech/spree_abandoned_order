@@ -6,7 +6,7 @@ describe Spree::AbandonedOrders::LookupQuery do
 
   subject(:query) { described_class.new.find_each }
   before(:all) {
-    Spree::AbandonedOrdersConfig.inactivity_for = 1.day
+    Spree::AbandonedOrdersConfig.inactive_for = 1.day
     Spree::AbandonedOrdersConfig.ignore_after = 5.days
   }
 
